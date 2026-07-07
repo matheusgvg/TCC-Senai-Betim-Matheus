@@ -1,0 +1,679 @@
+/* ============================================
+   ESTILOS DO DASHBOARD - GESTOR DE RH
+   Painel responsivo com tabelas e gráficos
+   Breakpoints: 900px (tablet), 640px (mobile)
+   ============================================ */
+
+/* Configurações básicas da página de dashboard */
+body.dashboard-page {
+    display: block;
+    min-height: 100vh;
+    background: var(--bg-gray);
+    color: var(--text-dark);
+}
+
+/* ============================================
+   SEÇÃO: CABEÇALHO DO PAINEL
+   Header com gradiente corporativo
+   ============================================ */
+
+/* Cabeçalho do painel com degradê azul corporativo */
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 24px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Container interno do header com flexbox */
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Label do header em maiúscula */
+.header-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Heading principal responsivo */
+.dashboard-header h1 {
+    font-size: 1.8rem;
+    margin: 4px 0;
+}
+
+/* Saudação personalizada */
+.gestor-saudacao {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Botão de sair com fundo transparente */
+.btn-sair {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-sair:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   SEÇÃO: ÁREA PRINCIPAL
+   Container com max-width e espaçamento
+   ============================================ */
+
+/* Área principal do conteúdo */
+.dashboard-main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   SEÇÃO: CARTÕES KPI
+   Grid responsivo de indicadores
+   ============================================ */
+
+/* Cartões de resumo (KPIs) dispostos lado a lado */
+.kpis-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Estilo dos cartões KPI */
+.kpi-card, .kpi-cardDestaque {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--secondary-color);
+}
+
+/* Cartão de aviso que ganha cor diferente */
+.kpi-cardDestaque {
+    border-top: 4px solid #b45309; /* Cor marrom/laranja para alerta */
+    background: #fffbeb;
+}
+
+/* Headings dos KPIs */
+.kpis-section h3 {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* Valores dos KPIs em destaque */
+.kpis-section strong {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+.kpi-cardDestaque strong {
+    color: #b45309;
+}
+
+/* Descrição dos KPIs */
+.kpis-section p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* ============================================
+   SEÇÃO: GRID PRINCIPAL
+   Layout com tabela e gráfico
+   ============================================ */
+
+/* Grade de divisão das tabelas e do gráfico */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Tabela maior à esquerda, gráfico menor à direita */
+    gap: 30px;
+}
+
+/* ============================================
+   SEÇÃO: PAINEL FUNCIONÁRIOS
+   Tabela com filtros
+   ============================================ */
+
+/* Estilo do painel esquerdo: tabela de funcionários */
+.painel-funcionarios, .painel-graficos {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings dos painéis */
+.painel-funcionarios h2, .painel-graficos h2 {
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+}
+
+/* Área de filtros com flexbox */
+.filtros-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Campo de filtro individual */
+.filtro-campo {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Label dos filtros */
+.filtro-campo label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--text-light);
+}
+
+/* Inputs e selects dos filtros */
+.filtro-campo input, .filtro-campo select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.filtro-campo input:focus, .filtro-campo select:focus {
+    border-color: var(--secondary-color);
+}
+
+/* ============================================
+   SEÇÃO: TABELA DE DADOS
+   Tabela com scroll horizontal em mobile
+   ============================================ */
+
+/* Container da tabela com scroll */
+.tabela-wrapper {
+    overflow-x: auto;
+}
+
+/* Estilo da tabela */
+.tabela-colaboradores {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+/* Células da tabela */
+.tabela-colaboradores th, .tabela-colaboradores td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Header da tabela */
+.tabela-colaboradores th {
+    background: #f8fafc;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+/* Hover na tabela */
+.tabela-colaboradores tr:hover {
+    background: #f8fafc;
+}
+
+/* ============================================
+   SEÇÃO: BADGES DE STATUS
+   Etiquetas coloridas para status
+   ============================================ */
+
+/* Etiquetas coloridas para o status (badges) */
+.badge-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.badge-status.concluido {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-status.andamento {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-status.nao-iniciado {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+/* ============================================
+   SEÇÃO: PAINEL DE GRÁFICOS
+   Gráficos e recomendações de treinamento
+   ============================================ */
+
+/* Subtítulo do gráfico */
+.grafico-subtitulo {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* Container do gráfico */
+.canvas-wrapper {
+    height: 250px;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+/* Recomendações de treinamento */
+.recomendacoes-treinamento {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.recomendacoes-treinamento h3 {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.recomendacoes-treinamento ul {
+    padding-left: 20px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.recomendacoes-treinamento li {
+    margin-bottom: 8px;
+}
+
+/* ============================================
+   SEÇÃO: MODAL DE AÇÕES DO GESTOR
+   Diálogo centralizado; largura fluida em mobile
+   ============================================ */
+
+.modal-content--acoes {
+    width: min(100%, 500px);
+    text-align: center;
+}
+
+.modal-colab-nome {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.modal-colab-email {
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+.modal-acoes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.modal-acoes-lista button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.btn-modal-certificado {
+    background-color: var(--secondary-color);
+}
+
+.btn-modal-mapa {
+    background-color: #0f766e;
+}
+
+.btn-modal-pack {
+    background-color: var(--primary-color);
+}
+
+/* ============================================
+   SEÇÃO: MAPA DE COMPETÊNCIAS (PI)
+   Grid dos 4 eixos comportamentais
+   ============================================ */
+
+.mapa-painel {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mapa-intro {
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.eixos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.eixo-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid var(--primary-color);
+}
+
+.eixo-card.A { border-top-color: #002855; }
+.eixo-card.B { border-top-color: #0056b3; }
+.eixo-card.C { border-top-color: #0f766e; }
+.eixo-card.D { border-top-color: #b45309; }
+
+.eixo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.eixo-nome {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.eixo-nota {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.eixo-nivel {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.nivel-alto { background: #d1fae5; color: #065f46; }
+.nivel-medio { background: #fef3c7; color: #92400e; }
+.nivel-baixo { background: #fee2e2; color: #991b1b; }
+
+.info-bloco {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.info-bloco strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+}
+
+.info-bloco p {
+    color: var(--text-light);
+}
+
+.mapa-acoes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn-voltar {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+.btn-voltar:hover {
+    background: #f1f5f9;
+}
+
+.btn-download-mapa {
+    max-width: 300px;
+    min-height: 44px;
+}
+
+.mapa-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: var(--text-light);
+}
+
+.mapa-erro {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #991b1b;
+    background: #fee2e2;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+.tabela-estado-vazio td,
+tr.tabela-estado-vazio td {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-light);
+}
+
+.tabela-linha-clicavel {
+    cursor: pointer;
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE MOBILE
+   Breakpoints: 900px (tablet), 640px (mobile)
+   ============================================ */
+
+/* Tablet - Ajustes iniciais para telas menores */
+@media (max-width: 900px) {
+    /* Header em coluna em tablet */
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    /* Ajusta título do header */
+    .dashboard-header h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Filtros em coluna em tablet */
+    .filtros-container {
+        flex-direction: column;
+    }
+
+    .filtro-campo {
+        min-width: auto;
+        width: 100%;
+    }
+
+    /* Grid muda para uma coluna em tablet */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-voltar,
+    .btn-download-mapa {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* Mobile - Ajustes críticos para telas pequenas */
+@media (max-width: 640px) {
+    /* Reduz padding do header em mobile */
+    .dashboard-header {
+        padding: 18px 14px 16px;
+    }
+
+    /* Header spacing reduzido */
+    .header-inner {
+        gap: 14px;
+    }
+
+    /* Main com padding reduzido */
+    .dashboard-main {
+        margin: 16px auto;
+        padding: 0 12px;
+        width: 100%;
+    }
+
+    /* Grid spacing reduzido */
+    .dashboard-grid {
+        gap: 18px;
+    }
+
+    /* Painéis com padding menor */
+    .painel-funcionarios,
+    .painel-graficos {
+        padding: 16px;
+    }
+
+    /* Título menor em mobile */
+    .dashboard-header h1 {
+        font-size: 1.3rem;
+    }
+
+    /* Label e saudação menores */
+    .header-label,
+    .gestor-saudacao {
+        font-size: 0.78rem;
+    }
+
+    /* Botão sair full width */
+    .btn-sair {
+        width: 100%;
+        text-align: center;
+        padding: 12px 14px;
+    }
+
+    /* KPIs em coluna em mobile */
+    .kpis-section {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* Tabela com scroll horizontal */
+    .tabela-wrapper {
+        overflow-x: auto;
+    }
+
+    .tabela-colaboradores {
+        min-width: 720px;
+    }
+
+    /* Células da tabela menores */
+    .tabela-colaboradores th,
+    .tabela-colaboradores td {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
+
+    /* Gráfico menor em mobile */
+    .canvas-wrapper {
+        height: 200px;
+    }
+
+    /* Recomendações com padding reduzido */
+    .recomendacoes-treinamento {
+        padding: 14px;
+    }
+
+    /* Filtros em grid em mobile */
+    .filtros-container {
+        display: grid;
+        gap: 14px;
+    }
+
+    .filtro-campo input, .filtro-campo select {
+        font-size: 16px;
+    }
+
+    /* Headings menores em mobile */
+    .painel-funcionarios h2,
+    .painel-graficos h2 {
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+    }
+
+    .eixos-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .eixo-card {
+        padding: 18px 16px;
+    }
+
+    .eixo-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mapa-acoes {
+        margin-top: 20px;
+        gap: 12px;
+    }
+
+    .modal-content--acoes {
+        width: min(92%, 500px);
+        padding: 20px 18px;
+    }
+}

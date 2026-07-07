@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MAPA - Meu Mapa de Competências</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-page">
+
+    <header class="dashboard-header">
+        <div class="header-inner">
+            <div>
+                <p class="header-label">Relatório Individual de Desenvolvimento</p>
+                <h1>Meu Mapa de Competências (PI)</h1>
+                <p id="nomeColaborador" class="gestor-saudacao">Olá, Colaborador</p>
+            </div>
+            <button type="button" id="btnSair" class="btn-sair">Sair</button>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="painel-funcionarios mapa-painel">
+            <h2>Diagnóstico de Perfil Comportamental</h2>
+            <p class="mapa-intro">
+                Este mapa descreve suas tendências de comportamento com base no modelo do Predictive Index (PI). Use-o para seu autoconhecimento e planejamento de carreira na PAREX.
+            </p>
+
+            <div id="gridEixos" class="eixos-container">
+                <div class="mapa-loading">Carregando mapa de competências...</div>
+            </div>
+
+            <div class="mapa-acoes">
+                <button type="button" id="btnVoltar" class="btn-voltar">Voltar à Dashboard</button>
+                <button type="button" id="btnDownloadMapa" class="btn-login btn-download-mapa">Baixar Mapa de Competências (PDF)</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="mapa_competencias.js"></script>
+</body>
+</html>

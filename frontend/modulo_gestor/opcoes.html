@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MAPA - Acesso do Gestor</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <div>
+                <p class="admin-label">Gestor de RH</p>
+                <h1>Escolha o módulo de acesso</h1>
+                <p id="nomeGestor" class="admin-subtitle">Olá, Gestor</p>
+            </div>
+            <button type="button" id="btnSair" class="btn-outline">Sair</button>
+        </div>
+    </header>
+
+    <main class="admin-main gestor-options">
+        <section class="admin-panel option-card">
+            <p class="section-kicker">Gestão estratégica</p>
+            <h2>Dashboard gerencial</h2>
+            <p>Consulte colaboradores, indicadores, médias de competência e recomendações de treinamento.</p>
+            <a class="option-link" href="../dashboard/dashboard.html">Abrir Dashboard</a>
+        </section>
+
+        <section class="admin-panel option-card">
+            <p class="section-kicker">Avaliação individual</p>
+            <h2>Responder Quiz</h2>
+            <p>Acesse o mesmo quiz dos colaboradores para registrar seu próprio mapeamento de competências.</p>
+            <a class="option-link" href="../modulo_colaborador/quiz.html">Abrir Quiz</a>
+        </section>
+    </main>
+
+    <script>
+        const usuario = JSON.parse(sessionStorage.getItem('mapa_usuario') || 'null');
+        if (!usuario || usuario.perfil !== 'gestor') {
+            alert('Acesso negado. Entre como Gestor de RH.');
+            window.location.href = '../index.html';
+        } else {
+            document.getElementById('nomeGestor').textContent = `Olá, ${usuario.nome}`;
+        }
+
+        document.getElementById('btnSair').addEventListener('click', () => {
+            sessionStorage.removeItem('mapa_usuario');
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+</html>

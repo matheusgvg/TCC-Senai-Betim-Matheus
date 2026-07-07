@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MAPA - Quiz Vocacional</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="quiz-page">
+
+    <header class="quiz-header">
+        <div class="quiz-header-inner">
+            <div>
+                <p class="quiz-label">Quiz Vocacional</p>
+                <h1 id="tituloQuiz">Mapeamento de Competências</h1>
+                <p id="nomeUsuario" class="quiz-subtitulo">Carregando...</p>
+            </div>
+            <button type="button" id="btnSair" class="btn-secundario">Sair</button>
+        </div>
+
+        <div class="barra-progresso">
+            <div id="barraPreenchida" class="barra-preenchida"></div>
+        </div>
+        <p id="textoProgresso" class="texto-progresso">Pergunta 1 de 12</p>
+    </header>
+
+    <main class="quiz-main">
+        <section id="areaQuiz" class="quiz-card">
+            <span id="badgeCategoria" class="badge-categoria">Hard Skills</span>
+            <h2 id="textoPergunta">Carregando pergunta...</h2>
+            <p class="escala-info">De 1 (discordo totalmente) a 5 (concordo totalmente)</p>
+
+            <div id="opcoesResposta" class="opcoes-resposta"></div>
+
+            <div class="quiz-acoes">
+                <button type="button" id="btnAnterior" class="btn-secundario" disabled>Anterior</button>
+                <div class="acoes-direita">
+                    <button type="button" id="btnSalvar" class="btn-salvar">Salvar e continuar depois</button>
+                    <button type="button" id="btnProximo" class="btn-primario">Próxima</button>
+                    <button type="button" id="btnTerminar" class="btn-primario hidden">Terminar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="areaConcluido" class="quiz-card hidden">
+            <h2>Quiz concluído!</h2>
+            <p id="mensagemConcluido">Suas respostas foram enviadas ao servidor.</p>
+
+            <div id="resumoNotas" class="resumo-notas"></div>
+
+            <div class="grafico-wrapper">
+                <canvas id="graficoRadar"></canvas>
+            </div>
+
+            <div class="acoes-concluido">
+                <button type="button" id="btnDownloadCertificado" class="btn-salvar">Baixar Certificado de Perfil</button>
+                <button type="button" id="btnVerMapaCompetencias" class="btn-salvar">Ver meu Mapa de Competências</button>
+                <button type="button" id="btnVoltarLogin" class="btn-primario">Voltar ao login</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

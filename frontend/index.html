@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PAREX - Portal de Competências & Aptidões</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-branding">
+            <div class="branding-content">
+                <img src="assets/images/logo-parex.png" alt="PAREX S.A. Logo" class="logo-industria">
+                <h1>Mapeamento de Competências</h1>
+                <p>Transformando o capital humano em dados estratégicos para a indústria metalmecânica.</p>
+            </div>
+        </div>
+
+        <div class="login-box">
+            <h2>Entrar no Sistema</h2>
+            <p class="subtitle">Acesso exclusivo para usuários cadastrados.</p>
+
+            <form id="formLogin" action="#" method="POST">
+                <div class="input-group">
+                    <label for="perfil">Perfil de Acesso</label>
+                    <select id="perfil" name="perfil" required>
+                        <option value="" disabled selected>Selecione o seu perfil...</option>
+                        <option value="admin">Administrador de T.I.</option>
+                        <option value="gestor">Gestor de RH</option>
+                        <option value="colaborador">Colaborador</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail Corporativo</label>
+                    <input type="email" id="email" name="email" placeholder="exemplo@parex.com.br" required autocomplete="username">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn-login">Entrar no Portal</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/login.js"></script>
+</body>
+</html>

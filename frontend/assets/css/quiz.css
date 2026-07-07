@@ -1,0 +1,481 @@
+/* ============================================
+   ESTILOS DO QUIZ VOCACIONAL
+   Mapeamento de competências interativo
+   Responsivo para desktop, tablet e mobile
+   ============================================ */
+
+/* Configurações da página quiz */
+body.quiz-page {
+    display: block;
+    min-height: 100vh;
+    background: var(--bg-gray);
+}
+
+/* ============================================
+   SEÇÃO: CABEÇALHO DO QUIZ
+   Header com progresso
+   ============================================ */
+
+/* Cabeçalho com gradiente corporativo */
+.quiz-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 24px 20px 20px;
+}
+
+/* Container interno do header */
+.quiz-header-inner {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* Label do quiz */
+.quiz-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 4px;
+}
+
+/* Heading do quiz */
+.quiz-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+
+/* Subtítulo do quiz */
+.quiz-subtitulo {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   SEÇÃO: BARRA DE PROGRESSO
+   Indicador visual de progresso
+   ============================================ */
+
+/* Barra de progresso */
+.barra-progresso {
+    max-width: 900px;
+    margin: 0 auto 8px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+/* Barra preenchida (animada) */
+.barra-preenchida {
+    height: 100%;
+    width: 0%;
+    background: #7dd3fc;
+    transition: width 0.3s ease;
+}
+
+/* Texto de progresso */
+.texto-progresso {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ============================================
+   SEÇÃO: ÁREA PRINCIPAL
+   Container do conteúdo do quiz
+   ============================================ */
+
+/* Área principal do quiz */
+.quiz-main {
+    max-width: 900px;
+    margin: -20px auto 40px;
+    padding: 0 20px;
+}
+
+/* ============================================
+   SEÇÃO: CARTÃO DO QUIZ
+   Card com pergunta e respostas
+   ============================================ */
+
+/* Cartão principal do quiz */
+.quiz-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   SEÇÃO: CATEGORIAS
+   Badges de categoria de pergunta
+   ============================================ */
+
+/* Badge de categoria */
+.badge-categoria {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: #e8f1ff;
+    color: var(--primary-color);
+}
+
+/* Categoria soft skills */
+.badge-categoria.soft {
+    background: #e8fff3;
+    color: #0f766e;
+}
+
+/* Categoria liderança */
+.badge-categoria.lideranca {
+    background: #fff4e8;
+    color: #b45309;
+}
+
+/* ============================================
+   SEÇÃO: PERGUNTAS E RESPOSTAS
+   Estilos de pergunta e opções
+   ============================================ */
+
+/* Pergunta do quiz */
+#textoPergunta {
+    color: var(--text-dark);
+    font-size: 1.35rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Info da escala */
+.escala-info {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+/* Container de opções */
+.opcoes-resposta {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+/* Opção individual */
+.opcao-resposta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.opcao-resposta:hover {
+    border-color: var(--secondary-color);
+    background: #f8fbff;
+}
+
+/* Opção selecionada */
+.opcao-resposta.selecionada {
+    border-color: var(--secondary-color);
+    background: #eef5ff;
+}
+
+/* Input dentro da opção */
+.opcao-resposta input {
+    accent-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   SEÇÃO: AÇÕES DO QUIZ
+   Botões de navegação
+   ============================================ */
+
+/* Container de ações */
+.quiz-acoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Container de ações à direita */
+.acoes-direita {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Botões do quiz */
+.btn-primario,
+.btn-secundario,
+.btn-salvar {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+/* Botão primário em azul */
+.btn-primario {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primario:hover {
+    background: var(--secondary-color);
+}
+
+/* Botão secundário com borda */
+.btn-secundario {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secundario:hover {
+    background: #eef3f8;
+}
+
+/* Botão salvar em verde */
+.btn-salvar {
+    background: #0f766e;
+    color: var(--white);
+}
+
+.btn-salvar:hover {
+    background: #115e59;
+}
+
+/* Botões desativados */
+.btn-primario:disabled,
+.btn-secundario:disabled,
+.btn-salvar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   SEÇÃO: TELA DE CONCLUSÃO
+   Resultados e gráficos
+   ============================================ */
+
+/* Resumo de notas */
+.resumo-notas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+/* Card individual de nota */
+.nota-card {
+    background: var(--bg-gray);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.nota-card strong {
+    display: block;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+/* ============================================
+   SEÇÃO: GRÁFICO
+   Container para gráficos radar
+   ============================================ */
+
+/* Container e ações na tela de conclusão */
+.grafico-wrapper {
+    max-width: 450px;
+    height: 320px;
+    position: relative;
+    margin: 32px auto;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Ações ao terminar o quiz */
+.acoes-concluido {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+/* Notificação toast */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #111827;
+    color: var(--white);
+    padding: 14px 18px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Quiz header com botão secundário */
+.quiz-header .btn-secundario {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.quiz-header .btn-secundario:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE MOBILE
+   Breakpoints: 900px (tablet), 640px (mobile)
+   ============================================ */
+
+/* Tablet - Ajustes iniciais */
+@media (max-width: 900px) {
+    /* Header em coluna em tablet */
+    .quiz-header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    /* Ajusta padding em tablet */
+    .quiz-header {
+        padding: 22px 18px 18px;
+    }
+
+    /* Main em tablet */
+    .quiz-main {
+        padding: 0 18px;
+    }
+
+    /* Card com padding reduzido */
+    .quiz-card {
+        padding: 28px 22px;
+    }
+
+    /* Badge menor em tablet */
+    .badge-categoria {
+        font-size: 0.78rem;
+    }
+
+    /* Ações em coluna em tablet */
+    .quiz-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .acoes-direita {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .acoes-direita button,
+    .quiz-header .btn-secundario {
+        width: 100%;
+    }
+}
+
+/* Mobile - Ajustes críticos */
+@media (max-width: 640px) {
+    /* Header com padding mínimo */
+    .quiz-header {
+        padding: 18px 14px 16px;
+    }
+
+    /* Header gap reduzido */
+    .quiz-header-inner {
+        gap: 14px;
+    }
+
+    /* Título menor em mobile */
+    .quiz-header h1 {
+        font-size: 1.3rem;
+    }
+
+    /* Barra de progresso menor */
+    .barra-progresso {
+        height: 8px;
+    }
+
+    /* Texto de progresso menor */
+    .texto-progresso {
+        font-size: 0.85rem;
+    }
+
+    /* Card com padding mínimo */
+    .quiz-card {
+        padding: 20px 16px;
+    }
+
+    /* Opção com padding reduzido */
+    .opcao-resposta {
+        padding: 12px 14px;
+    }
+
+    /* Ações com gap reduzido */
+    .quiz-acoes {
+        gap: 12px;
+    }
+
+    /* Ações direita full width */
+    .acoes-direita {
+        width: 100%;
+    }
+
+    /* Botões full width em mobile */
+    .btn-primario,
+    .btn-secundario,
+    .btn-salvar {
+        width: 100%;
+    }
+
+    /* Resumo em coluna em mobile */
+    .resumo-notas {
+        gap: 12px;
+    }
+
+    /* Gráfico responsivo em mobile */
+    .grafico-wrapper {
+        max-width: 100%;
+        height: auto;
+        min-height: 260px;
+        padding: 14px;
+    }
+
+    /* Toast com margem segura em mobile */
+    .toast {
+        bottom: max(16px, var(--safe-bottom));
+        right: max(16px, var(--safe-right));
+        left: max(16px, var(--safe-left));
+    }
+
+    /* Ações de conclusão em coluna */
+    .acoes-concluido {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .acoes-concluido button {
+        width: 100%;
+    }
+}
+

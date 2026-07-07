@@ -1,0 +1,508 @@
+/* ============================================
+   ESTILOS DO PAINEL ADMINISTRATIVO
+   Gestão de usuários e controle de acesso
+   Responsivo para desktop, tablet e mobile
+   ============================================ */
+
+/* Configurações básicas da página admin */
+body.admin-page {
+    display: block;
+    min-height: 100vh;
+    background: #f4f7f9;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   SEÇÃO: CABEÇALHO ADMINISTRATIVO
+   Header com navegação e ações
+   ============================================ */
+
+/* Cabeçalho com gradiente corporativo */
+.admin-header {
+    background: linear-gradient(135deg, #002855, #0056b3);
+    color: var(--white);
+    padding: 26px 20px;
+}
+
+/* Container interno do header */
+.admin-header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* Container de ações no header */
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botões em ícone no header */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-icon-symbol {
+    font-size: 1.1rem;
+}
+
+.btn-icon-label {
+    white-space: nowrap;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.24);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   SEÇÃO: TOOLBAR DE BUSCA
+   Barra de pesquisa responsiva
+   ============================================ */
+
+/* Barra de ferramentas com busca */
+.table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+}
+
+/* Campo de busca */
+.search-input {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background: #f8fafc;
+    color: var(--text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 16px; /* Evita zoom em iOS */
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+}
+
+/* ============================================
+   SEÇÃO: TIPOGRAFIA
+   Labels e estilos de texto
+   ============================================ */
+
+/* Label em maiúscula e pequeno */
+.admin-label,
+.section-kicker {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
+
+.admin-label {
+    opacity: 0.82;
+}
+
+/* Heading do admin */
+.admin-header h1 {
+    margin: 6px 0;
+    font-size: 1.8rem;
+}
+
+/* Subtítulo do admin */
+.admin-subtitle {
+    opacity: 0.9;
+}
+
+/* ============================================
+   SEÇÃO: ÁREA PRINCIPAL
+   Container com espaçamento e grid
+   ============================================ */
+
+/* Área principal com grid responsivo */
+.admin-main {
+    max-width: 1180px;
+    margin: 28px auto 48px;
+    padding: 0 20px;
+    display: grid;
+    gap: 24px;
+}
+
+/* ============================================
+   SEÇÃO: PAINÉIS
+   Cartões com conteúdo
+   ============================================ */
+
+/* Painel geral com sombra */
+.admin-panel {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(0, 40, 85, 0.06);
+}
+
+/* Título da seção */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Kicker (subtítulo) da seção */
+.section-kicker {
+    color: var(--secondary-color);
+    margin-bottom: 4px;
+}
+
+/* Heading da seção */
+.section-title h2 {
+    color: var(--primary-color);
+    font-size: 1.35rem;
+}
+
+/* ============================================
+   SEÇÃO: FORMULÁRIOS
+   Layouts de formulário responsivos
+   ============================================ */
+
+/* Grid de formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* Dica de formulário */
+.form-hint {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin: 4px 0 18px;
+}
+
+/* ============================================
+   SEÇÃO: BOTÕES
+   Estilos de botões diversos
+   ============================================ */
+
+/* Botões principais */
+.btn-primary,
+.btn-outline,
+.btn-light,
+.btn-danger,
+.btn-edit {
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s, opacity 0.2s, color 0.2s;
+}
+
+/* Botão primário em azul */
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 12px 18px;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+}
+
+/* Botão outline em branco */
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.72);
+    padding: 10px 18px;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* Botão light em azul claro */
+.btn-light {
+    background: #e8f1ff;
+    color: var(--primary-color);
+    padding: 10px 14px;
+}
+
+/* Botões de ação menores */
+.btn-edit,
+.btn-danger {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+}
+
+/* Botão edit em azul claro */
+.btn-edit {
+    background: #e8f1ff;
+    color: var(--primary-color);
+}
+
+/* Botão danger em vermelho */
+.btn-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ============================================
+   SEÇÃO: TABELAS
+   Estilos para tabelas de dados
+   ============================================ */
+
+/* Container com scroll horizontal */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Tabela geral */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+/* Células da tabela */
+.admin-table th,
+.admin-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Header da tabela */
+.admin-table th {
+    background: #f8fafc;
+    color: var(--primary-color);
+}
+
+/* ============================================
+   SEÇÃO: BADGES
+   Etiquetas coloridas
+   ============================================ */
+
+/* Badges de perfil */
+.perfil-badge,
+.total-badge {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.perfil-badge {
+    background: #e8f1ff;
+    color: var(--primary-color);
+}
+
+.perfil-badge.gestor {
+    background: #e8fff3;
+    color: #0f766e;
+}
+
+.total-badge {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* ============================================
+   SEÇÃO: CÉLULAS DE AÇÃO
+   Botões em linha na tabela
+   ============================================ */
+
+/* Container de ações */
+.actions-cell {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Linha vazia da tabela */
+.empty-row {
+    text-align: center;
+    color: var(--text-light);
+}
+
+/* ============================================
+   SEÇÃO: NOTIFICAÇÕES
+   Toast notifications
+   ============================================ */
+
+/* Toast de notificação */
+.admin-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #111827;
+    color: var(--white);
+    padding: 13px 16px;
+    border-radius: 8px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    z-index: 20;
+}
+
+/* ============================================
+   SEÇÃO: OPÇÕES DO GESTOR
+   Cards de opções
+   ============================================ */
+
+/* Grid de opções do gestor */
+.gestor-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Card de opção */
+.option-card {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.option-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.option-card p:not(.section-kicker) {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Link da opção */
+.option-link {
+    margin-top: auto;
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.option-link:hover {
+    background: var(--secondary-color);
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE MOBILE
+   Breakpoints: 900px (tablet), 640px (mobile)
+   ============================================ */
+
+@media (max-width: 900px) {
+    .admin-header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .admin-header-actions {
+        flex-wrap: wrap;
+        justify-content: stretch;
+    }
+
+    .admin-header-actions .btn-outline,
+    .admin-header-actions .btn-icon {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .table-toolbar {
+        justify-content: stretch;
+    }
+
+    .search-input {
+        max-width: none;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gestor-options {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-header {
+        padding: 18px 14px;
+    }
+
+    .admin-header h1 {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+    }
+
+    .admin-main {
+        margin: 16px auto 32px;
+        padding: 0 12px;
+        padding-left: max(12px, var(--safe-left));
+        padding-right: max(12px, var(--safe-right));
+    }
+
+    .admin-panel {
+        padding: 16px 14px;
+    }
+
+    .admin-table {
+        min-width: 640px;
+    }
+
+    .actions-cell {
+        flex-direction: column;
+    }
+
+    .actions-cell button {
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .btn-primary,
+    .option-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .option-card {
+        min-height: auto;
+    }
+
+    .admin-toast {
+        right: max(16px, var(--safe-right));
+        left: max(16px, var(--safe-left));
+        bottom: max(16px, var(--safe-bottom));
+    }
+}

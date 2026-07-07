@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MAPA - Painel do Gestor</title>
+    <!-- CSS global do projeto e CSS específico do painel -->
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body class="dashboard-page">
+
+    <!-- Cabeçalho Principal do Painel -->
+    <header class="dashboard-header">
+        <div class="header-inner">
+            <div>
+                <p class="header-label">Painel Administrativo - Recursos Humanos</p>
+                <h1>Mapeamento de Talentos PAREX</h1>
+                <p id="nomeGestor" class="gestor-saudacao">Olá, Gestor</p>
+            </div>
+            <!-- Botão simples de logout -->
+            <button type="button" id="btnSair" class="btn-sair">Sair do Painel</button>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        
+        <!-- Cartões de Resumo/KPIs no topo -->
+        <section class="kpis-section">
+            <div class="kpi-card">
+                <h3>Total de Colaboradores</h3>
+                <strong id="kpiTotal">0</strong>
+                <p>Cadastrados na fábrica</p>
+            </div>
+            <div class="kpi-card">
+                <h3>Quizzes Concluídos</h3>
+                <strong id="kpiConcluidos">0</strong>
+                <p>Mapeamentos finalizados</p>
+            </div>
+            <div class="kpi-cardDestaque">
+                <h3>Aviso do RH</h3>
+                <strong id="kpiAviso">Carregando...</strong>
+                <p>Foco principal de treinamento</p>
+            </div>
+        </section>
+
+        <!-- Seção de Conteúdo: Filtros e Tabela de um lado, Gráfico de Gaps do outro -->
+        <div class="dashboard-grid">
+            
+            <!-- Lado Esquerdo: Filtros e Listagem de Funcionários -->
+            <section class="painel-funcionarios">
+                <h2>Listagem de Funcionários</h2>
+                
+                <!-- Barra de Filtros -->
+                <div class="filtros-container">
+                    <div class="filtro-campo">
+                        <label for="buscaTexto">Pesquisar por nome ou e-mail:</label>
+                        <input type="text" id="buscaTexto" placeholder="Digite para buscar...">
+                    </div>
+                    <div class="filtro-campo">
+                        <label for="filtroMetalmecanica">Competência em Metalmecânica:</label>
+                        <select id="filtroMetalmecanica">
+                            <option value="todos">Todos os colaboradores</option>
+                            <option value="domina">Domina Metalmecânica (Técnico >= 7.0)</option>
+                            <option value="treinar">Necessita Treinar (Técnico < 7.0 ou sem nota)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabela de Dados -->
+                <div class="tabela-wrapper">
+                    <table class="tabela-colaboradores">
+                        <thead>
+                            <tr>
+                                <th>Colaborador</th>
+                                <th>E-mail</th>
+                                <th>Status</th>
+                                <th>Mapa PI</th>
+                                <th>Técnico</th>
+                                <th>Comportamento</th>
+                                <th>Liderança</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabela">
+                            <tr class="tabela-estado-vazio">
+                                <td colspan="7">Carregando dados...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Lado Direito: Gráfico de Gaps e Sugestão de Cursos -->
+            <section class="painel-graficos">
+                <h2>Lacunas de Treinamento (Gaps)</h2>
+                <p class="grafico-subtitulo">Compara a média atual da fábrica com a meta ideal da PAREX</p>
+                
+                <!-- Área do gráfico -->
+                <div class="canvas-wrapper">
+                    <canvas id="graficoGaps"></canvas>
+                </div>
+
+                <!-- Painel Simples com Recomendações de Ação -->
+                <div class="recomendacoes-treinamento">
+                    <h3>Recomendações Automáticas:</h3>
+                    <ul id="listaRecomendacoes">
+                        <li>Carregando recomendações...</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal de Ações do Gestor ao clicar no colaborador -->
+    <div id="modalAcoes" class="modal-recovery hidden">
+        <div class="modal-content modal-content--acoes">
+            <span class="close-modal" id="fecharModalAcoes">&times;</span>
+            <h3 id="modalColabNome" class="modal-colab-nome">Nome do Colaborador</h3>
+            <p id="modalColabEmail" class="modal-colab-email">email@parex.com.br</p>
+
+            <div class="modal-acoes-lista">
+                <button type="button" id="btnVerCertificado" class="btn-modal-certificado">Ver Certificado (Baixar PDF)</button>
+                <button type="button" id="btnVerMapa" class="btn-modal-mapa">Ver Mapa de Competências (Relatório Online)</button>
+                <button type="button" id="btnBaixarPack" class="btn-modal-pack">Baixar Pack Completo (PDF Consolidado)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importação do Chart.js via CDN para desenhar o gráfico de barras -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Importação do jsPDF via CDN para a geração de relatórios e certificados -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Script principal de lógica do painel Banco de Talentos -->
+    <script src="banco_talentos.js"></script>
+</body>
+</html>

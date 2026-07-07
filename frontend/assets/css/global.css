@@ -1,0 +1,453 @@
+/* ============================================
+   ESTILOS GLOBAIS - PAREX
+   Tema corporativo azul industrial
+   Responsivo para desktop, tablet e mobile
+   ============================================ */
+
+/* Reset de estilos e configurações base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tokens de design: cores, breakpoints e áreas seguras (notch) */
+:root {
+    --primary-color: #002855;
+    --secondary-color: #0056b3;
+    --text-dark: #333;
+    --text-light: #666;
+    --white: #ffffff;
+    --bg-gray: #f4f7f9;
+    --bp-tablet: 900px;
+    --bp-mobile: 640px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+}
+
+/* Body com comportamento responsive */
+body {
+    background-color: var(--bg-gray);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ============================================
+   SEÇÃO: LAYOUT LOGIN
+   Container flexível que se adapta a telas pequenas
+   ============================================ */
+
+/* Container de Login - Se torna vertical em mobile */
+.login-container {
+    display: flex;
+    width: min(100%, 900px);
+    min-height: 500px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Painel de branding: empilha abaixo do formulário em telas estreitas */
+.login-branding {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Logo responsiva */
+.logo-industria {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.login-branding h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.login-branding p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Lado Direito: Formulário */
+.login-box {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.login-notice {
+    color: var(--text-light);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   SEÇÃO: FORMULÁRIOS E INPUTS
+   Campos de entrada com foco em usabilidade
+   ============================================ */
+
+/* Grupo de inputs com espaçamento */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Inputs e selects responsivos */
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-size: 16px; /* iOS amplia inputs com font-size < 16px */
+}
+
+.input-group input:focus {
+    border-color: var(--secondary-color);
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forgot-link {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* ============================================
+   SEÇÃO: BOTÕES
+   Estilos de botões com estados de interação
+   ============================================ */
+
+/* Botão de Login */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background-color: var(--secondary-color);
+}
+
+/* ============================================
+   SEÇÃO: UTILITÁRIOS
+   Classes auxiliares para layout e visibilidade
+   ============================================ */
+
+/* Classe para ocultar elementos */
+.hidden { 
+    display: none; 
+}
+
+/* ============================================
+   SEÇÃO: MODAIS
+   Caixas de diálogo responsivas
+   ============================================ */
+
+/* Modal de recuperação de senha */
+.modal-recovery.hidden {
+    display: none;
+}
+
+.modal-recovery {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 26px 28px 24px;
+    border-radius: 18px;
+    width: min(100%, 440px);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.modal-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.14);
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.modal-title-group h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.modal-title-group p {
+    margin: 4px 0 0;
+    color: var(--text-light);
+    font-size: 0.94rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Botão secundário em modais */
+.btn-secondary {
+    background: #f1f5f9;
+    color: var(--text-dark);
+    border: 1px solid #cbd5e1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0;
+}
+
+/* Botão de fechar: alinhado à direita sem float (compatível com flex) */
+.close-modal, .close-modal-cadastro {
+    align-self: flex-end;
+    margin-left: auto;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.close-modal:hover, .close-modal-cadastro:hover {
+    color: var(--primary-color);
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Botão de recuperação */
+.btn-recovery {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-recovery:hover {
+    background-color: var(--primary-color);
+}
+
+/* ============================================
+   SEÇÃO: LINKS E NAVEGAÇÃO
+   Estilos para links de cadastro e navegação
+   ============================================ */
+
+/* Link de Cadastro */
+.cadastro-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.cadastro-link p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.cadastro-link a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.cadastro-link a:hover {
+    color: var(--primary-color);
+}
+
+.cadastro-voltar {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.cadastro-voltar p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.cadastro-voltar a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.cadastro-voltar a:hover {
+    color: var(--primary-color);
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE MOBILE
+   Breakpoints: 900px (tablet), 640px (mobile)
+   ============================================ */
+
+@media (max-width: 900px) {
+    /* Login container flexível em tablet */
+    .login-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    /* Reduz padding em telas menores */
+    .login-branding,
+    .login-box {
+        padding: 30px 24px;
+    }
+
+    /* Logo menor em tablet */
+    .logo-industria {
+        width: 220px;
+        margin: 0 auto 20px;
+    }
+
+    /* Branding centralizado */
+    .login-branding {
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 12px;
+        padding-left: max(12px, var(--safe-left));
+        padding-right: max(12px, var(--safe-right));
+    }
+
+    /* Ajusta border-radius em mobile */
+    .login-container {
+        border-radius: 10px;
+    }
+
+    /* Padding reduzido em mobile */
+    .login-branding,
+    .login-box {
+        padding: 24px 18px;
+    }
+
+    .logo-industria {
+        width: min(100%, 180px);
+    }
+
+    .login-branding h1 {
+        font-size: clamp(1.35rem, 5vw, 1.5rem);
+    }
+
+    .login-branding p {
+        font-size: 0.9rem;
+    }
+
+    /* Label row em coluna no mobile */
+    .label-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Reduz forgot-link em mobile */
+    .forgot-link {
+        font-size: 0.85rem;
+    }
+
+    /* Botões com padding aumentado para mobile */
+    .btn-login,
+    .btn-recovery {
+        padding: 13px;
+    }
+
+    /* Modal ajustado para mobile */
+    .modal-content {
+        width: min(92%, 420px);
+        padding: 22px;
+    }
+}
