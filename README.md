@@ -64,3 +64,149 @@ As respostas do quiz são processadas por algoritmos que calculam a intensidade 
 ---
 
 ## 🏗️ Stack Tecnológica
+
+┌─────────────────────────────────────────────────────┐
+
+│                    MAPA — Stack                      │
+
+├──────────────┬──────────────────────────────────────┤
+
+│  Frontend    │  HTML5 · CSS3 · JavaScript ES6+       │
+
+│  Backend     │  PHP 8 (algoritmos PI + integração    │
+
+│              │  de e-mail via PHPMailer)              │
+
+│  Database    │  SQLite (mapa.db)                     │
+
+│  Ambiente    │  XAMPP (Apache + PHP local)           │
+
+└──────────────┴──────────────────────────────────────┘
+
+
+> **Por que SQLite?** Escolhido estrategicamente pelo **baixo custo operacional**, **zero configuração de servidor de banco** e **portabilidade total** — o arquivo `mapa.db` é autocontido e não requer instalação adicional.
+
+---
+
+## 📁 Estrutura de Pastas
+MAPA/
+
+│
+
+├── 📂 frontend/          # Interface do usuário
+
+│   ├── pages/            # HTML das telas (login, quiz, dashboard...)
+
+│   ├── css/              # Estilos e temas visuais
+
+│   └── js/               # Lógica client-side e requisições AJAX
+
+│
+
+├── 📂 backend/           # Lógica de negócio e API interna
+
+│   ├── auth/             # Autenticação e controle de sessão
+
+│   ├── quiz/             # Processamento do quiz e cálculo PI
+
+│   ├── relatorios/       # Geração de PDF, Excel e certificados
+
+│   └── mail/             # Integração de e-mail
+
+│
+
+├── 📂 database/          # Banco de dados e scripts SQL
+
+│   ├── mapa.db           # Arquivo SQLite principal
+
+│   └── schema.sql        # DDL para recriação do banco
+
+│
+
+├── 📂 assets/            # Recursos estáticos globais
+
+│   ├── img/              # Logotipos, ícones e imagens
+
+│   └── fonts/            # Tipografias customizadas
+
+│
+
+└── README.md
+
+
+---
+
+## 🚀 Instalação e Execução Local
+
+### Pré-requisitos
+- [XAMPP](https://www.apachefriends.org/) (v8.x ou superior) instalado e configurado
+
+### Passo a Passo
+
+**1. Clone o repositório**
+
+git clone https://github.com/matheusgvg/TCC-Senai-Betim-Matheus.git
+
+
+**2. Mova o projeto para o diretório do Apache**
+
+# Windows
+
+Copie a pasta para: C:xampphtdocsmapa
+
+# Linux / macOS
+
+cp -r TCC-Senai-Betim-Matheus /opt/lampp/htdocs/mapa
+
+
+**3. Inicie os serviços no XAMPP**
+
+Abra o **XAMPP Control Panel** e inicie:
+- ✅ **Apache**
+
+> O módulo MySQL **não é necessário** — o projeto utiliza SQLite.
+
+**4. Configure o banco de dados**
+
+O arquivo `mapa.db` já vem populado com a estrutura base. Verifique se ele está em:
+
+htdocs/mapa/database/mapa.db
+
+Caso precise recriar o banco do zero:
+
+sqlite3 database/mapa.db < database/schema.sql
+
+**5. Acesse o sistema**
+
+Abra o navegador e acesse:
+
+http://localhost/mapa/frontend/index.html
+
+---
+
+## 👥 Equipe de Desenvolvimento
+
+| Nome | Papel |
+|------|-------|
+| **Matheus** | 👑 Líder do Projeto & Líder de Turma |
+| **Bryan** | Desenvolvimento |
+| **Davi Franklin** | Desenvolvimento |
+| **Davi Moreno** | Desenvolvimento |
+| **Pedro** | Desenvolvimento |
+| **Prof.ª Priscila Nascimento** | Orientadora |
+
+> 🏫 Projeto desenvolvido no **SENAI Betim** — Curso Técnico em **Desenvolvimento de Sistemas**.
+
+---
+
+## 📜 Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
+
+---
+
+<div align="center">
+
+Desenvolvido com 💙 pela equipe MAPA · SENAI Betim · 2026
+
+</div>
