@@ -1,105 +1,308 @@
-/* ============================================
-   ESTILOS GLOBAIS - PAREX
-   Tema corporativo azul industrial
-   Responsivo para desktop, tablet e mobile
-   ============================================ */
+/* ============================================================
+   MAPA · PAREX — SISTEMA DE DESIGN GLOBAL
+   Identidade "engenharia industrial / blueprint de talentos"
+   Paleta: azul-aço profundo + âmbar de segurança + grafite
+   ============================================================ */
 
-/* Reset de estilos e configurações base */
-* {
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Tokens de design: cores, breakpoints e áreas seguras (notch) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Tokens de design ---------- */
 :root {
-    --primary-color: #002855;
-    --secondary-color: #0056b3;
-    --text-dark: #333;
-    --text-light: #666;
+    /* Cores de marca (mantidas para compatibilidade com todo o código existente) */
+    --primary-color: #0a2b52;      /* Azul industrial profundo PAREX */
+    --secondary-color: #1668dc;    /* Azul "arco elétrico" — CTAs e destaques */
+    --text-dark: #131b2c;
+    --text-light: #5c6b82;
     --white: #ffffff;
-    --bg-gray: #f4f7f9;
-    --bp-tablet: 900px;
-    --bp-mobile: 640px;
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
-    --safe-right: env(safe-area-inset-right, 0px);
-    --safe-left: env(safe-area-inset-left, 0px);
+    --bg-gray: #eef2f7;
+
+    /* Extensões da paleta */
+    --navy-950: #050c18;
+    --navy-900: #0a1830;
+    --navy-800: #0f2847;
+    --steel-400: #64748b;
+    --steel-200: #cbd5e1;
+    --accent-amber: #f2a71b;       /* Âmbar de sinalização industrial */
+    --accent-amber-dark: #b9790a;
+    --accent-teal: #0f9488;
+    --accent-teal-light: #14b8a6;
+    --danger: #dc2626;
+    --border-color: #e2e8f0;
+    --surface: #ffffff;
+
+    /* Tipografia */
+    --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+    /* Elevação */
+    --shadow-sm: 0 1px 2px rgba(10, 27, 51, 0.06), 0 1px 3px rgba(10, 27, 51, 0.08);
+    --shadow-md: 0 6px 16px rgba(10, 27, 51, 0.08), 0 2px 6px rgba(10, 27, 51, 0.06);
+    --shadow-lg: 0 20px 45px rgba(6, 16, 33, 0.16), 0 6px 18px rgba(6, 16, 33, 0.08);
+    --shadow-glow: 0 0 0 1px rgba(22, 104, 220, 0.14), 0 12px 32px rgba(22, 104, 220, 0.16);
+
+    /* Movimento */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --dur-fast: 0.18s;
+    --dur-base: 0.32s;
+    --dur-slow: 0.6s;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
 }
 
-/* Body com comportamento responsive */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 body {
+    font-family: var(--font-body);
     background-color: var(--bg-gray);
+    color: var(--text-dark);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* ============================================
-   SEÇÃO: LAYOUT LOGIN
-   Container flexível que se adapta a telas pequenas
-   ============================================ */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+}
 
-/* Container de Login - Se torna vertical em mobile */
+/* Scrollbar refinada */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: rgba(10, 43, 82, 0.28);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(10, 43, 82, 0.45); background-clip: padding-box; }
+
+/* Foco visível e acessível em qualquer elemento interativo */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid rgba(22, 104, 220, 0.45);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* ---------- Padrão decorativo "blueprint" (grade técnica) ----------
+   Motivo de assinatura reaproveitado em headers/hero: remete ao
+   traçado de engenharia de uma planta industrial. */
+.blueprint-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px, 22px 22px, 110px 110px, 110px 110px;
+    mask-image: radial-gradient(ellipse 120% 100% at 30% 0%, #000 45%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 120% 100% at 30% 0%, #000 45%, transparent 92%);
+}
+
+/* Anel/varredura de "escaneamento" — assinatura visual do mapeamento */
+.scan-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(78, 168, 255, 0.35);
+    pointer-events: none;
+}
+
+@keyframes scan-pulse {
+    0%   { transform: scale(0.85); opacity: 0.55; }
+    70%  { transform: scale(1.28); opacity: 0; }
+    100% { transform: scale(1.28); opacity: 0; }
+}
+
+@keyframes scan-sweep {
+    0%   { transform: translateY(-110%); opacity: 0; }
+    10%  { opacity: 0.9; }
+    90%  { opacity: 0.9; }
+    100% { transform: translateY(210%); opacity: 0; }
+}
+
+/* ---------- Animações de entrada ---------- */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.94) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.fade-up { animation: fade-up var(--dur-slow) var(--ease-out) both; }
+
+/* ============================================================
+   LAYOUT: TELA DE LOGIN
+   ============================================================ */
+
+body:has(.login-container) {
+    background:
+        radial-gradient(1100px 620px at 82% -10%, rgba(22, 104, 220, 0.12), transparent 60%),
+        var(--bg-gray);
+}
+
 .login-container {
     display: flex;
-    width: min(100%, 900px);
-    min-height: 500px;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: min(100%, 940px);
+    min-height: 540px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
+    position: relative;
+    animation: pop-in var(--dur-slow) var(--ease-out) both;
 }
 
-/* Painel de branding: empilha abaixo do formulário em telas estreitas */
+/* Lado esquerdo: painel de marca industrial */
 .login-branding {
     flex: 1;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    background:
+        radial-gradient(560px 420px at 50% 8%, rgba(78, 168, 255, 0.20), transparent 65%),
+        linear-gradient(160deg, var(--navy-950) 0%, var(--primary-color) 65%, var(--secondary-color) 130%);
     color: var(--white);
-    padding: 40px;
+    padding: 44px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.login-branding::after {
+    /* Linha de varredura animada — reforça o conceito de "mapeamento" */
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    height: 130px;
+    top: 0;
+    background: linear-gradient(180deg, transparent, rgba(125, 211, 252, 0.28), transparent);
+    animation: scan-sweep 5.5s var(--ease-out) infinite;
+    animation-delay: 1.1s;
+    z-index: 1;
+}
+
+.branding-content {
+    position: relative;
+    z-index: 2;
+}
+
+.branding-content .scan-ring {
+    left: 50%;
+    top: 44px;
+    width: 210px;
+    height: 210px;
+    transform: translateX(-50%);
+    animation: scan-pulse 2.8s var(--ease-out) infinite;
+}
+
+.branding-content .scan-ring:nth-of-type(2) {
+    animation-delay: 1s;
 }
 
 /* Logo responsiva */
 .logo-industria {
-    width: 300px;
-    margin-bottom: 20px;
+    width: 230px;
+    margin: 0 auto 26px;
+    display: block;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+    animation: fade-up var(--dur-slow) var(--ease-out) both;
 }
 
 .login-branding h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    animation: fade-up var(--dur-slow) var(--ease-out) 0.08s both;
 }
 
 .login-branding p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    opacity: 0.9;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    opacity: 0.86;
+    max-width: 360px;
+    margin: 0 auto;
+    animation: fade-up var(--dur-slow) var(--ease-out) 0.16s both;
 }
 
-/* Lado Direito: Formulário */
+/* Tag técnica flutuante, reforça o tom "engenharia" sem poluir */
+.branding-content::before {
+    content: 'MAPEAMENTO • DADOS • DESENVOLVIMENTO';
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    color: rgba(125, 211, 252, 0.75);
+    margin-bottom: 18px;
+    animation: fade-up var(--dur-slow) var(--ease-out) both;
+}
+
+/* Lado direito: formulário */
 .login-box {
     flex: 1;
-    padding: 50px;
+    padding: 52px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: fade-up var(--dur-slow) var(--ease-out) 0.1s both;
 }
 
 .login-box h2 {
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 1.55rem;
+    font-weight: 700;
 }
 
 .subtitle {
     color: var(--text-light);
-    margin-bottom: 30px;
-    font-size: 0.9rem;
+    margin-bottom: 28px;
+    font-size: 0.92rem;
 }
 
 .login-notice {
@@ -108,39 +311,53 @@ body {
     line-height: 1.5;
     margin-top: 18px;
     padding-top: 16px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-color);
 }
 
-/* ============================================
-   SEÇÃO: FORMULÁRIOS E INPUTS
-   Campos de entrada com foco em usabilidade
-   ============================================ */
+/* ============================================================
+   FORMULÁRIOS E INPUTS
+   ============================================================ */
 
-/* Grupo de inputs com espaçamento */
 .input-group {
     margin-bottom: 20px;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     font-weight: 600;
+    font-size: 0.86rem;
     color: var(--text-dark);
 }
 
-/* Inputs e selects responsivos */
-.input-group input, .input-group select {
+.input-group input,
+.input-group select {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 13px 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
     outline: none;
-    transition: border-color 0.3s;
-    font-size: 16px; /* iOS amplia inputs com font-size < 16px */
+    background: #fbfcfe;
+    transition: border-color var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-fast) var(--ease-out),
+                background var(--dur-fast) var(--ease-out);
+    font-size: 16px;
+    font-family: var(--font-body);
+    color: var(--text-dark);
 }
 
-.input-group input:focus {
+.input-group input::placeholder { color: #a3adbd; }
+
+.input-group input:hover,
+.input-group select:hover {
+    border-color: #c3cedd;
+}
+
+.input-group input:focus,
+.input-group select:focus {
     border-color: var(--secondary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(22, 104, 220, 0.12);
 }
 
 .label-row {
@@ -152,71 +369,112 @@ body {
     font-size: 0.8rem;
     color: var(--secondary-color);
     text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-out);
 }
 
-/* ============================================
-   SEÇÃO: BOTÕES
-   Estilos de botões com estados de interação
-   ============================================ */
+.forgot-link:hover { color: var(--primary-color); text-decoration: underline; }
 
-/* Botão de Login */
-.btn-login {
+/* ============================================================
+   BOTÕES — com micro-interações (elevação, brilho, press)
+   ============================================================ */
+
+.btn-login,
+.btn-recovery {
     width: 100%;
-    padding: 14px;
-    background-color: var(--primary-color);
+    padding: 15px;
     color: var(--white);
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-family: var(--font-body);
     cursor: pointer;
-    transition: background 0.3s;
-    font-size: 16px;
+    font-size: 15.5px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform var(--dur-fast) var(--ease-spring),
+                box-shadow var(--dur-fast) var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out);
 }
 
-.btn-login:hover {
+.btn-login {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 8px 20px rgba(10, 43, 82, 0.28);
+}
+
+.btn-recovery {
     background-color: var(--secondary-color);
+    margin-top: 10px;
 }
 
-/* ============================================
-   SEÇÃO: UTILITÁRIOS
-   Classes auxiliares para layout e visibilidade
-   ============================================ */
-
-/* Classe para ocultar elementos */
-.hidden { 
-    display: none; 
+/* Brilho diagonal que atravessa o botão no hover */
+.btn-login::before,
+.btn-recovery::before,
+.btn-primario::before,
+.btn-primary::before,
+.option-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.28) 48%, transparent 66%);
+    background-size: 220% 100%;
+    background-position: 140% 0;
+    transition: background-position var(--dur-slow) var(--ease-out);
+    z-index: -1;
 }
 
-/* ============================================
-   SEÇÃO: MODAIS
-   Caixas de diálogo responsivas
-   ============================================ */
-
-/* Modal de recuperação de senha */
-.modal-recovery.hidden {
-    display: none;
+.btn-login:hover::before,
+.btn-recovery:hover::before,
+.btn-primario:hover::before,
+.btn-primary:hover::before,
+.option-link:hover::before {
+    background-position: -40% 0;
 }
+
+.btn-login:hover,
+.btn-recovery:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(10, 43, 82, 0.34);
+}
+
+.btn-login:active,
+.btn-recovery:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+
+.hidden { display: none !important; }
+
+/* ============================================================
+   MODAIS
+   ============================================================ */
+
+.modal-recovery.hidden { display: none; }
 
 .modal-recovery {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(5, 12, 24, 0.55);
+    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
+    animation: fade-in var(--dur-base) var(--ease-out) both;
 }
 
 .modal-content {
     background: var(--white);
-    padding: 26px 28px 24px;
-    border-radius: 18px;
+    padding: 28px 30px 26px;
+    border-radius: var(--radius-lg);
     width: min(100%, 440px);
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
-    display: flex;
-    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    animation: pop-in var(--dur-base) var(--ease-spring) both;
 }
 
 .modal-header {
@@ -233,21 +491,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(59, 130, 246, 0.14);
+    background: rgba(22, 104, 220, 0.12);
     color: var(--primary-color);
     font-size: 1.4rem;
+    flex-shrink: 0;
 }
 
-.modal-title-group h3 {
-    margin: 0;
-    font-size: 1.3rem;
-}
-
-.modal-title-group p {
-    margin: 4px 0 0;
-    color: var(--text-light);
-    font-size: 0.94rem;
-}
+.modal-title-group h3 { margin: 0; font-size: 1.25rem; color: var(--primary-color); }
+.modal-title-group p { margin: 4px 0 0; color: var(--text-light); font-size: 0.92rem; }
 
 .modal-footer {
     display: flex;
@@ -256,198 +507,80 @@ body {
     margin-top: 20px;
 }
 
-/* Botão secundário em modais */
 .btn-secondary {
     background: #f1f5f9;
     color: var(--text-dark);
     border: 1px solid #cbd5e1;
     padding: 10px 16px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-weight: 700;
-}
-
-.btn-secondary:hover {
-    background: #e2e8f0;
-}
-
-/* Botão de fechar: alinhado à direita sem float (compatível com flex) */
-.close-modal, .close-modal-cadastro {
-    align-self: flex-end;
-    margin-left: auto;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: background var(--dur-fast) var(--ease-out);
+}
+
+.btn-secondary:hover { background: #e2e8f0; }
+
+.close-modal, .close-modal-cadastro {
+    float: right;
+    font-size: 26px;
     line-height: 1;
+    font-weight: 700;
+    color: #9aa5b6;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 
 .close-modal:hover, .close-modal-cadastro:hover {
     color: var(--primary-color);
+    transform: rotate(90deg);
 }
 
-.modal-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
+.modal-content h3 { color: var(--primary-color); margin-bottom: 10px; }
+.modal-content p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
 
-.modal-content p {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-}
+/* ============================================================
+   LINKS DE NAVEGAÇÃO SECUNDÁRIA
+   ============================================================ */
 
-/* Botão de recuperação */
-.btn-recovery {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-
-.btn-recovery:hover {
-    background-color: var(--primary-color);
-}
-
-/* ============================================
-   SEÇÃO: LINKS E NAVEGAÇÃO
-   Estilos para links de cadastro e navegação
-   ============================================ */
-
-/* Link de Cadastro */
-.cadastro-link {
+.cadastro-link, .cadastro-voltar {
     text-align: center;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
 }
 
-.cadastro-link p {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
+.cadastro-link p, .cadastro-voltar p { color: var(--text-light); font-size: 0.9rem; }
 
-.cadastro-link a {
+.cadastro-link a, .cadastro-voltar a {
     color: var(--secondary-color);
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-weight: 700;
+    transition: color var(--dur-fast) var(--ease-out);
 }
 
-.cadastro-link a:hover {
-    color: var(--primary-color);
-}
+.cadastro-link a:hover, .cadastro-voltar a:hover { color: var(--primary-color); }
 
-.cadastro-voltar {
-    text-align: center;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-}
-
-.cadastro-voltar p {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.cadastro-voltar a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.cadastro-voltar a:hover {
-    color: var(--primary-color);
-}
-
-/* ============================================
-   MEDIA QUERIES - RESPONSIVIDADE MOBILE
-   Breakpoints: 900px (tablet), 640px (mobile)
-   ============================================ */
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
 
 @media (max-width: 900px) {
-    /* Login container flexível em tablet */
-    .login-container {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    /* Reduz padding em telas menores */
-    .login-branding,
-    .login-box {
-        padding: 30px 24px;
-    }
-
-    /* Logo menor em tablet */
-    .logo-industria {
-        width: 220px;
-        margin: 0 auto 20px;
-    }
-
-    /* Branding centralizado */
-    .login-branding {
-        text-align: center;
-    }
+    .login-container { flex-direction: column; min-height: auto; }
+    .login-branding, .login-box { padding: 34px 26px; }
+    .logo-industria { width: 200px; margin: 0 auto 18px; }
+    .login-branding { text-align: center; }
 }
 
 @media (max-width: 640px) {
-    body {
-        padding: 12px;
-        padding-left: max(12px, var(--safe-left));
-        padding-right: max(12px, var(--safe-right));
-    }
-
-    /* Ajusta border-radius em mobile */
-    .login-container {
-        border-radius: 10px;
-    }
-
-    /* Padding reduzido em mobile */
-    .login-branding,
-    .login-box {
-        padding: 24px 18px;
-    }
-
-    .logo-industria {
-        width: min(100%, 180px);
-    }
-
-    .login-branding h1 {
-        font-size: clamp(1.35rem, 5vw, 1.5rem);
-    }
-
-    .login-branding p {
-        font-size: 0.9rem;
-    }
-
-    /* Label row em coluna no mobile */
-    .label-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    /* Reduz forgot-link em mobile */
-    .forgot-link {
-        font-size: 0.85rem;
-    }
-
-    /* Botões com padding aumentado para mobile */
-    .btn-login,
-    .btn-recovery {
-        padding: 13px;
-    }
-
-    /* Modal ajustado para mobile */
-    .modal-content {
-        width: min(92%, 420px);
-        padding: 22px;
-    }
+    body { padding: 12px; }
+    .login-container { border-radius: 14px; }
+    .login-branding, .login-box { padding: 26px 20px; }
+    .login-branding h1 { font-size: 1.4rem; }
+    .login-branding p { font-size: 0.9rem; }
+    .label-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .forgot-link { font-size: 0.85rem; }
+    .btn-login, .btn-recovery { padding: 14px; }
+    .modal-content { width: min(92%, 420px); padding: 22px; }
 }

@@ -170,13 +170,13 @@ function renderizarTabela(lista) {
     tbody.innerHTML = '';
 
     if (lista.length === 0) {
-        tbody.innerHTML = '<tr class="tabela-estado-vazio"><td colspan="7">Nenhum funcionário encontrado.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 20px;">Nenhum funcionário encontrado.</td></tr>';
         return;
     }
 
     lista.forEach(colab => {
         const tr = document.createElement('tr');
-        tr.classList.add('tabela-linha-clicavel');
+        tr.style.cursor = 'pointer'; // Dá a dica visual para clicar na linha
 
         let classeStatus = 'nao-iniciado';
         if (colab.status === 'Concluído') classeStatus = 'concluido';

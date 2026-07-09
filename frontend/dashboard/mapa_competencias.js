@@ -1,6 +1,6 @@
 /**
- * MAPA - Mapa de Competências (PI)
- * Carrega o diagnóstico comportamental e gera o PDF do relatório.
+ * MAPA - Script do Mapa de Competências (Estilo Simples/Iniciante)
+ * Carrega o diagnóstico de PI do colaborador e gera o PDF do relatório.
  */
 
 // Endpoint do backend
@@ -25,12 +25,12 @@ async function iniciarPagina() {
         return;
     }
 
-    // Gestor pode visualizar outro colaborador via ?colab_id= na URL
+    // 2. Determina qual colaborador carregar (pode vir pela URL se o gestor estiver visualizando)
     const params = new URLSearchParams(window.location.search);
     const idParam = params.get('colab_id');
     colabId = idParam ? parseInt(idParam, 10) : usuarioLogado.id;
 
-    // Colaborador só pode ver o próprio relatório
+    // Se for colaborador acessando outro perfil, bloqueia
     if (usuarioLogado.perfil === 'colaborador' && colabId !== usuarioLogado.id) {
         alert('Acesso não autorizado.');
         window.location.href = 'dashboard.html';
@@ -57,7 +57,7 @@ function obterUsuarioLogado() {
  */
 function vincularEventos() {
     document.getElementById('btnVoltar').addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+        window.history.back();
     });
 
     // Botão de download do PDF
@@ -98,7 +98,7 @@ async function carregarMapaCompetencias() {
             desenharCardsEixos();
         } else {
             document.getElementById('gridEixos').innerHTML = `
-                <div class="mapa-erro">
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #991b1b; background: #fee2e2; border-radius: 8px;">
                     <strong>Atenção:</strong> ${resposta.mensagem}
                 </div>
             `;

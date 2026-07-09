@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAPA - Painel do Gestor</title>
     <!-- CSS global do projeto e CSS específico do painel -->
     <link rel="stylesheet" href="../assets/css/global.css">
@@ -12,6 +12,7 @@
 
     <!-- Cabeçalho Principal do Painel -->
     <header class="dashboard-header">
+        <div class="blueprint-grid" aria-hidden="true"></div>
         <div class="header-inner">
             <div>
                 <p class="header-label">Painel Administrativo - Recursos Humanos</p>
@@ -82,8 +83,9 @@
                             </tr>
                         </thead>
                         <tbody id="corpoTabela">
-                            <tr class="tabela-estado-vazio">
-                                <td colspan="7">Carregando dados...</td>
+                            <!-- Preenchido pelo JavaScript -->
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;">Carregando dados...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -114,15 +116,15 @@
 
     <!-- Modal de Ações do Gestor ao clicar no colaborador -->
     <div id="modalAcoes" class="modal-recovery hidden">
-        <div class="modal-content modal-content--acoes">
+        <div class="modal-content" style="width: 500px; text-align: center;">
             <span class="close-modal" id="fecharModalAcoes">&times;</span>
-            <h3 id="modalColabNome" class="modal-colab-nome">Nome do Colaborador</h3>
-            <p id="modalColabEmail" class="modal-colab-email">email@parex.com.br</p>
-
-            <div class="modal-acoes-lista">
-                <button type="button" id="btnVerCertificado" class="btn-modal-certificado">Ver Certificado (Baixar PDF)</button>
-                <button type="button" id="btnVerMapa" class="btn-modal-mapa">Ver Mapa de Competências (Relatório Online)</button>
-                <button type="button" id="btnBaixarPack" class="btn-modal-pack">Baixar Pack Completo (PDF Consolidado)</button>
+            <h3 id="modalColabNome" style="color: var(--primary-color); margin-bottom: 8px;">Nome do Colaborador</h3>
+            <p id="modalColabEmail" style="color: var(--text-light); margin-bottom: 24px;">email@parex.com.br</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: stretch;">
+                <button type="button" id="btnVerCertificado" class="btn-salvar" style="background-color: #0056b3; padding: 12px; border-radius: 6px; font-weight: bold; border: none; color: white; cursor: pointer;">Ver Certificado (Baixar PDF)</button>
+                <button type="button" id="btnVerMapa" class="btn-salvar" style="background-color: #0f766e; padding: 12px; border-radius: 6px; font-weight: bold; border: none; color: white; cursor: pointer;">Ver Mapa de Competências (Relatório Online)</button>
+                <button type="button" id="btnBaixarPack" class="btn-login" style="padding: 12px; border-radius: 6px; font-weight: bold; border: none; color: white; cursor: pointer;">Baixar Pack Completo (PDF Consolidado)</button>
             </div>
         </div>
     </div>

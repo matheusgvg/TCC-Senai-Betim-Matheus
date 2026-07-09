@@ -1,204 +1,196 @@
-/* ============================================
-   ESTILOS DO QUIZ VOCACIONAL
-   Mapeamento de competências interativo
-   Responsivo para desktop, tablet e mobile
-   ============================================ */
+/* ============================================================
+   QUIZ VOCACIONAL — Mapeamento de competências interativo
+   ============================================================ */
 
-/* Configurações da página quiz */
 body.quiz-page {
     display: block;
     min-height: 100vh;
     background: var(--bg-gray);
+    padding: 0;
 }
 
-/* ============================================
-   SEÇÃO: CABEÇALHO DO QUIZ
-   Header com progresso
-   ============================================ */
-
-/* Cabeçalho com gradiente corporativo */
+/* ---------- Cabeçalho ---------- */
 .quiz-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, var(--navy-950) 0%, var(--primary-color) 55%, var(--secondary-color) 145%);
     color: var(--white);
-    padding: 24px 20px 20px;
+    padding: 28px 20px 24px;
 }
 
-/* Container interno do header */
+.quiz-header .blueprint-grid { opacity: 0.9; }
+
 .quiz-header-inner {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
-    margin: 0 auto 20px;
+    margin: 0 auto 22px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 16px;
 }
 
-/* Label do quiz */
 .quiz-label {
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     opacity: 0.85;
     margin-bottom: 4px;
 }
 
-/* Heading do quiz */
-.quiz-header h1 {
-    font-size: 1.6rem;
-    margin-bottom: 6px;
-}
+.quiz-header h1 { font-size: 1.65rem; margin-bottom: 6px; }
+.quiz-subtitulo { opacity: 0.88; font-size: 0.95rem; }
 
-/* Subtítulo do quiz */
-.quiz-subtitulo {
-    opacity: 0.9;
-    font-size: 0.95rem;
-}
-
-/* ============================================
-   SEÇÃO: BARRA DE PROGRESSO
-   Indicador visual de progresso
-   ============================================ */
-
-/* Barra de progresso */
+/* ---------- Barra de progresso ---------- */
 .barra-progresso {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
     margin: 0 auto 8px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.16);
     border-radius: 999px;
     overflow: hidden;
 }
 
-/* Barra preenchida (animada) */
 .barra-preenchida {
+    position: relative;
     height: 100%;
     width: 0%;
-    background: #7dd3fc;
-    transition: width 0.3s ease;
+    background: linear-gradient(90deg, #4fa8ff, #7dd3fc);
+    border-radius: 999px;
+    transition: width var(--dur-slow) var(--ease-out);
+    overflow: hidden;
 }
 
-/* Texto de progresso */
+.barra-preenchida::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.55) 50%, transparent 80%);
+    background-size: 200% 100%;
+    animation: shimmer 2.2s linear infinite;
+}
+
 .texto-progresso {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
     margin: 0 auto;
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    opacity: 0.88;
 }
 
-/* ============================================
-   SEÇÃO: ÁREA PRINCIPAL
-   Container do conteúdo do quiz
-   ============================================ */
-
-/* Área principal do quiz */
+/* ---------- Área principal ---------- */
 .quiz-main {
     max-width: 900px;
     margin: -20px auto 40px;
     padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
-/* ============================================
-   SEÇÃO: CARTÃO DO QUIZ
-   Card com pergunta e respostas
-   ============================================ */
-
-/* Cartão principal do quiz */
+/* ---------- Cartão do quiz ---------- */
 .quiz-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    animation: pop-in var(--dur-base) var(--ease-out) both;
 }
 
-/* ============================================
-   SEÇÃO: CATEGORIAS
-   Badges de categoria de pergunta
-   ============================================ */
-
-/* Badge de categoria */
+/* ---------- Categorias ---------- */
 .badge-categoria {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
     background: #e8f1ff;
     color: var(--primary-color);
+    animation: fade-up var(--dur-fast) var(--ease-out) both;
 }
 
-/* Categoria soft skills */
-.badge-categoria.soft {
-    background: #e8fff3;
-    color: #0f766e;
-}
+.badge-categoria.soft { background: #e2fbf3; color: var(--accent-teal); }
+.badge-categoria.lideranca { background: #fff4e2; color: var(--accent-amber-dark); }
 
-/* Categoria liderança */
-.badge-categoria.lideranca {
-    background: #fff4e8;
-    color: #b45309;
-}
-
-/* ============================================
-   SEÇÃO: PERGUNTAS E RESPOSTAS
-   Estilos de pergunta e opções
-   ============================================ */
-
-/* Pergunta do quiz */
+/* ---------- Pergunta e respostas ---------- */
 #textoPergunta {
     color: var(--text-dark);
-    font-size: 1.35rem;
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.45;
     margin-bottom: 10px;
+    animation: fade-up var(--dur-base) var(--ease-out) 0.03s both;
 }
 
-/* Info da escala */
 .escala-info {
     color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 24px;
+    font-size: 0.88rem;
+    margin-bottom: 26px;
 }
 
-/* Container de opções */
 .opcoes-resposta {
     display: grid;
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
-/* Opção individual */
 .opcao-resposta {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
+    gap: 14px;
+    padding: 15px 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
+    background: var(--surface);
+    transition: border-color var(--dur-fast) var(--ease-out),
+                background var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-out),
+                box-shadow var(--dur-fast) var(--ease-out);
+    animation: fade-up var(--dur-base) var(--ease-out) both;
 }
+
+.opcoes-resposta .opcao-resposta:nth-child(1) { animation-delay: 0.02s; }
+.opcoes-resposta .opcao-resposta:nth-child(2) { animation-delay: 0.06s; }
+.opcoes-resposta .opcao-resposta:nth-child(3) { animation-delay: 0.1s; }
+.opcoes-resposta .opcao-resposta:nth-child(4) { animation-delay: 0.14s; }
+.opcoes-resposta .opcao-resposta:nth-child(5) { animation-delay: 0.18s; }
 
 .opcao-resposta:hover {
     border-color: var(--secondary-color);
-    background: #f8fbff;
+    background: #f7faff;
+    transform: translateX(3px);
 }
 
-/* Opção selecionada */
 .opcao-resposta.selecionada {
     border-color: var(--secondary-color);
     background: #eef5ff;
+    box-shadow: 0 0 0 3px rgba(22, 104, 220, 0.1);
 }
 
-/* Input dentro da opção */
 .opcao-resposta input {
-    accent-color: var(--primary-color);
-    transform: scale(1.1);
+    width: 19px;
+    height: 19px;
+    accent-color: var(--secondary-color);
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
-/* ============================================
-   SEÇÃO: AÇÕES DO QUIZ
-   Botões de navegação
-   ============================================ */
+.opcao-resposta span {
+    font-size: 0.96rem;
+    color: var(--text-dark);
+}
 
-/* Container de ações */
+/* ---------- Ações do quiz ---------- */
 .quiz-acoes {
     display: flex;
     justify-content: space-between;
@@ -207,111 +199,106 @@ body.quiz-page {
     flex-wrap: wrap;
 }
 
-/* Container de ações à direita */
-.acoes-direita {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
+.acoes-direita { display: flex; gap: 10px; flex-wrap: wrap; }
 
-/* Botões do quiz */
-.btn-primario,
-.btn-secundario,
-.btn-salvar {
-    padding: 12px 18px;
-    border-radius: 8px;
+.btn-primario, .btn-secundario, .btn-salvar {
+    padding: 13px 20px;
+    border-radius: var(--radius-sm);
     border: none;
     font-weight: 700;
+    font-family: var(--font-body);
     cursor: pointer;
-    transition: background 0.2s, opacity 0.2s;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out),
+                transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-fast) var(--ease-out);
 }
 
-/* Botão primário em azul */
 .btn-primario {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--white);
+    box-shadow: 0 8px 18px rgba(10, 43, 82, 0.22);
 }
 
-.btn-primario:hover {
-    background: var(--secondary-color);
-}
+.btn-primario:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10, 43, 82, 0.3); }
 
-/* Botão secundário com borda */
 .btn-secundario {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color);
 }
 
-.btn-secundario:hover {
-    background: #eef3f8;
-}
+.btn-secundario:hover:not(:disabled) { background: #eef3f8; transform: translateY(-1px); }
 
-/* Botão salvar em verde */
 .btn-salvar {
-    background: #0f766e;
+    background: linear-gradient(135deg, #0d7d72, var(--accent-teal-light));
     color: var(--white);
+    box-shadow: 0 8px 18px rgba(15, 148, 136, 0.22);
 }
 
-.btn-salvar:hover {
-    background: #115e59;
-}
+.btn-salvar:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(15, 148, 136, 0.28); }
 
-/* Botões desativados */
-.btn-primario:disabled,
-.btn-secundario:disabled,
-.btn-salvar:disabled {
-    opacity: 0.5;
+.btn-primario:disabled, .btn-secundario:disabled, .btn-salvar:disabled {
+    opacity: 0.45;
     cursor: not-allowed;
+    transform: none !important;
 }
 
-/* ============================================
-   SEÇÃO: TELA DE CONCLUSÃO
-   Resultados e gráficos
-   ============================================ */
+/* ---------- Tela de conclusão ---------- */
+#areaConcluido h2 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    animation: fade-up var(--dur-base) var(--ease-out) both;
+}
 
-/* Resumo de notas */
+#areaConcluido > p {
+    color: var(--text-light);
+    animation: fade-up var(--dur-base) var(--ease-out) 0.05s both;
+}
+
 .resumo-notas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 16px;
-    margin: 24px 0;
+    margin: 26px 0;
 }
 
-/* Card individual de nota */
 .nota-card {
-    background: var(--bg-gray);
-    border-radius: 10px;
-    padding: 18px;
+    background: linear-gradient(180deg, #f6f9fc, #eef3f8);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px;
     text-align: center;
+    animation: fade-up var(--dur-base) var(--ease-out) both;
+    transition: transform var(--dur-base) var(--ease-out);
 }
+
+.nota-card:hover { transform: translateY(-3px); }
 
 .nota-card strong {
     display: block;
+    font-family: var(--font-mono);
     font-size: 2rem;
+    font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 6px;
 }
 
-/* ============================================
-   SEÇÃO: GRÁFICO
-   Container para gráficos radar
-   ============================================ */
-
-/* Container e ações na tela de conclusão */
 .grafico-wrapper {
-    max-width: 450px;
+    max-width: 460px;
     height: 320px;
     position: relative;
-    margin: 32px auto;
-    background: var(--white);
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    margin: 34px auto;
+    background: var(--surface);
+    padding: 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    animation: pop-in var(--dur-base) var(--ease-out) 0.1s both;
 }
 
-/* Ações ao terminar o quiz */
 .acoes-concluido {
     display: flex;
     justify-content: center;
@@ -320,162 +307,58 @@ body.quiz-page {
     flex-wrap: wrap;
 }
 
-/* Notificação toast */
+/* ---------- Toast ---------- */
 .toast {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: #111827;
+    background: var(--navy-950);
     color: var(--white);
     padding: 14px 18px;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
     z-index: 1000;
+    font-size: 0.9rem;
+    animation: fade-up var(--dur-base) var(--ease-spring) both;
 }
 
-/* Quiz header com botão secundário */
+/* Botão secundário no header (fundo escuro) */
 .quiz-header .btn-secundario {
     color: var(--white);
-    border-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.quiz-header .btn-secundario:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
+.quiz-header .btn-secundario:hover { background: rgba(255, 255, 255, 0.12); }
 
-/* ============================================
-   MEDIA QUERIES - RESPONSIVIDADE MOBILE
-   Breakpoints: 900px (tablet), 640px (mobile)
-   ============================================ */
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
 
-/* Tablet - Ajustes iniciais */
 @media (max-width: 900px) {
-    /* Header em coluna em tablet */
-    .quiz-header-inner {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-    }
-
-    /* Ajusta padding em tablet */
-    .quiz-header {
-        padding: 22px 18px 18px;
-    }
-
-    /* Main em tablet */
-    .quiz-main {
-        padding: 0 18px;
-    }
-
-    /* Card com padding reduzido */
-    .quiz-card {
-        padding: 28px 22px;
-    }
-
-    /* Badge menor em tablet */
-    .badge-categoria {
-        font-size: 0.78rem;
-    }
-
-    /* Ações em coluna em tablet */
-    .quiz-acoes {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .acoes-direita {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .acoes-direita button,
-    .quiz-header .btn-secundario {
-        width: 100%;
-    }
+    .quiz-header-inner { flex-direction: column; align-items: stretch; gap: 16px; }
+    .quiz-header { padding: 24px 18px 20px; }
+    .quiz-main { padding: 0 18px; }
+    .quiz-card { padding: 30px 24px; }
+    .badge-categoria { font-size: 0.78rem; }
+    .quiz-acoes { flex-direction: column; align-items: stretch; }
+    .acoes-direita { width: 100%; flex-direction: column; }
+    .acoes-direita button { width: 100%; }
 }
 
-/* Mobile - Ajustes críticos */
 @media (max-width: 640px) {
-    /* Header com padding mínimo */
-    .quiz-header {
-        padding: 18px 14px 16px;
-    }
-
-    /* Header gap reduzido */
-    .quiz-header-inner {
-        gap: 14px;
-    }
-
-    /* Título menor em mobile */
-    .quiz-header h1 {
-        font-size: 1.3rem;
-    }
-
-    /* Barra de progresso menor */
-    .barra-progresso {
-        height: 8px;
-    }
-
-    /* Texto de progresso menor */
-    .texto-progresso {
-        font-size: 0.85rem;
-    }
-
-    /* Card com padding mínimo */
-    .quiz-card {
-        padding: 20px 16px;
-    }
-
-    /* Opção com padding reduzido */
-    .opcao-resposta {
-        padding: 12px 14px;
-    }
-
-    /* Ações com gap reduzido */
-    .quiz-acoes {
-        gap: 12px;
-    }
-
-    /* Ações direita full width */
-    .acoes-direita {
-        width: 100%;
-    }
-
-    /* Botões full width em mobile */
-    .btn-primario,
-    .btn-secundario,
-    .btn-salvar {
-        width: 100%;
-    }
-
-    /* Resumo em coluna em mobile */
-    .resumo-notas {
-        gap: 12px;
-    }
-
-    /* Gráfico responsivo em mobile */
-    .grafico-wrapper {
-        max-width: 100%;
-        height: auto;
-        min-height: 260px;
-        padding: 14px;
-    }
-
-    /* Toast com margem segura em mobile */
-    .toast {
-        bottom: max(16px, var(--safe-bottom));
-        right: max(16px, var(--safe-right));
-        left: max(16px, var(--safe-left));
-    }
-
-    /* Ações de conclusão em coluna */
-    .acoes-concluido {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .acoes-concluido button {
-        width: 100%;
-    }
+    .quiz-header { padding: 20px 14px 18px; }
+    .quiz-header-inner { gap: 14px; }
+    .quiz-header h1 { font-size: 1.3rem; }
+    .barra-progresso { height: 8px; }
+    .texto-progresso { font-size: 0.82rem; }
+    .quiz-card { padding: 22px 18px; }
+    .opcao-resposta { padding: 13px 15px; }
+    .quiz-acoes { gap: 12px; }
+    .acoes-direita { width: 100%; }
+    .btn-primario, .btn-secundario, .btn-salvar { width: 100%; }
+    .resumo-notas { gap: 12px; }
+    .grafico-wrapper { max-width: 100%; height: auto; padding: 14px; }
+    .toast { bottom: 16px; right: 16px; left: 16px; }
+    .acoes-concluido { flex-direction: column; align-items: stretch; }
+    .acoes-concluido button { width: 100%; }
 }
-
