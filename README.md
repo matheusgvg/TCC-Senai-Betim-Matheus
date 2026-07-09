@@ -1,36 +1,233 @@
-# Projeto-TCC-Senai
+```markdown
+<div align="center">
 
-## Objetivos do Repositório
-O tema deste projeto foi escolhido com base nas demandas cadastradas por empresas na plataforma SAGA SENAI, uma plataforma que tem por objetivo permitir que os alunos resolvam demandas reais do mercado de trabalho.
+# 🗺️ MAPA
+### Mapeamento de Competências e Aptidões Internas
 
-Escolhemos a demanda **Mapeamento de Competências e Aptidões Internas** (ID da Demanda: 12276), que visa atender a empresa **PAREX Indústria Mecânica, Caldeiraria e Estruturas Metálicas S.A.** no seguinte desafio:
+![Status]()
+![Instituição]()
+![Licença]()
+![PHP]()
+![SQLite]()
 
-A empresa Parex necessita identificar talentos e competências de forma estruturada para otimizar a distribuição de funções e o desenvolvimento profissional. Nossa solução consiste no desenvolvimento de um sistema de mapeamento via "Quiz Vocacional". O colaborador responderá a um formulário interativo de competências técnicas e comportamentais (soft skills), e o sistema processará os dados para gerar um banco de talentos, sugerindo a melhor alocação ou trilha de treinamento para cada perfil.
+> **Sistema de diagnóstico de perfil comportamental e técnico desenvolvido para a Indústria PAREX.**  
+> Projeto de Conclusão de Curso — SENAI Betim | Desenvolvimento de Sistemas
 
-## Sobre o Desafio
-* O mapeamento de competências e aptidões internas permite identificar de forma estruturada os conhecimentos, habilidades, comportamentos e potenciais dos colaboradores.
-* Isso possibilita compreender talentos, otimizar a distribuição de funções, apoiar decisões de desenvolvimento profissional e fortalecer a gestão de pessoas, gerando mais eficiência, alinhamento estratégico e melhor aproveitamento das capacidades individuais e coletivas.
+</div>
 
-## Tecnologias e Metodologia
-A construção da ferramenta digital proposta baseia-se em uma arquitetura de software dividida nas camadas de Frontend, Backend e Banco de Dados, estruturada para atender a dois perfis de usuários distintos: o Colaborador e o Gestor de RH.
+---
 
-* **Front-End**: O sistema utilizará HTML5 e CSS3 para criar uma interface de quiz moderna e amigável, reduzindo a resistência dos colaboradores. JavaScript será utilizado para gerenciar a lógica em tempo real e fornecer um feedback visual imediato ao usuário.
-* **Back-End**: O sistema será desenvolvido utilizando a linguagem PHP para receber os dados, processar os algoritmos de mapeamento e gerar diagnósticos individuais.
-* **Banco de Dados**: Utilizaremos SQLite para armazenar as informações localmente de forma estruturada, com custo de infraestrutura praticamente nulo.
+## 🎯 Visão Geral
 
-## Relatório de Competências PI
+Organizações de alta performance enfrentam um desafio silencioso: **talentos invisíveis**. Colaboradores com grande potencial passam despercebidos por avaliações subjetivas, incompletas ou despadronizadas.
 
-O sistema entrega um parecer detalhado de comportamento com base nos quatro eixos do Predictive Index (PI): Dominância, Extroversão, Paciência e Formalidade. Cada colaborador recebe:
-* Pontuação média em cada eixo (escala 1-5);
-* Classificação por nível: Baixo, Médio ou Alto;
-* Pontos fortes comportamentais;
-* Sugestões de desenvolvimento com foco em autoconhecimento e planejamento de carreira.
+O **MAPA** foi concebido para resolver esse problema diretamente na **Indústria PAREX**. Por meio de um **Quiz Vocacional interativo**, o sistema cruza de forma sistemática:
 
-A visão do Gestor de RH permite identificar rapidamente quais colaboradores já possuem o mapa de competências completo e acessar o relatório online ou o pack consolidado em PDF.
+- 🔧 **Hard Skills** — competências técnicas mensuráveis
+- 🧠 **Soft Skills** — comportamentos e traços de personalidade
 
-## Equipe Desenvolvedora
-* Matheus Gustavo Vieira Gonzaga (Líder)
-* Bryan Irios de Souza Rodrigues
-* Davi Henriques de Freitas Moreno
-* Davi Franklin Pinto Araujo Souza
-* Pedro Neri Pereira
+O resultado é um **diagnóstico de perfil individual** preciso, acessível ao colaborador e estratégico para o RH.
+
+---
+
+## 🔬 Metodologia Científica
+
+O motor de análise do MAPA é fundamentado nos **4 eixos do Predictive Index (PI)**, metodologia validada internacionalmente para mapeamento de perfis profissionais:
+
+| Eixo | Fator | Descrição |
+|------|-------|-----------|
+| **A** | Dominância | Necessidade de controle sobre o ambiente e os resultados |
+| **B** | Extroversão | Necessidade de relacionamentos e influência social |
+| **C** | Paciência | Necessidade de consistência e estabilidade |
+| **D** | Formalidade | Necessidade de conformidade com regras e estruturas |
+
+As respostas do quiz são processadas por algoritmos que calculam a intensidade de cada fator, gerando um **vetor de perfil** representado visualmente.
+
+---
+
+## ✨ Funcionalidades Principais
+
+### 👤 Colaborador
+- 🔐 Login seguro com autenticação por sessão
+- 📝 Quiz Vocacional com **salvamento automático de progresso**
+- 📊 **Gráfico de Radar** interativo com diagnóstico visual do perfil
+- 🏅 Download de **Certificado de Perfil** personalizado em PDF
+
+### 👔 Gestor de RH
+- 🏦 **Banco de Talentos** com filtros avançados por competência, setor e perfil PI
+- 📉 **Dashboard de Lacunas (Gaps)** — identifica discrepâncias entre perfil ideal e atual
+- 📄 Exportação de relatórios consolidados em **PDF e Excel**
+
+### 🛠️ Administrador
+- ⚙️ **CRUD completo** de usuários, departamentos e competências
+- Controle granular de permissões e acesso ao sistema
+
+---
+
+## 🏗️ Stack Tecnológica
+
+```
+
+┌─────────────────────────────────────────────────────┐
+
+│                    MAPA — Stack                      │
+
+├──────────────┬──────────────────────────────────────┤
+
+│  Frontend    │  HTML5 · CSS3 · JavaScript ES6+       │
+
+│  Backend     │  PHP 8 (algoritmos PI + integração    │
+
+│              │  de e-mail via PHPMailer)              │
+
+│  Database    │  SQLite (mapa.db)                     │
+
+│  Ambiente    │  XAMPP (Apache + PHP local)           │
+
+└──────────────┴──────────────────────────────────────┘
+
+```
+
+> **Por que SQLite?** Escolhido estrategicamente pelo **baixo custo operacional**, **zero configuração de servidor de banco** e **portabilidade total** — o arquivo `mapa.db` é autocontido e não requer instalação adicional.
+
+---
+
+## 📁 Estrutura de Pastas
+
+```
+
+MAPA/
+
+│
+
+├── 📂 frontend/          # Interface do usuário
+
+│   ├── pages/            # HTML das telas (login, quiz, dashboard...)
+
+│   ├── css/              # Estilos e temas visuais
+
+│   └── js/               # Lógica client-side e requisições AJAX
+
+│
+
+├── 📂 backend/           # Lógica de negócio e API interna
+
+│   ├── auth/             # Autenticação e controle de sessão
+
+│   ├── quiz/             # Processamento do quiz e cálculo PI
+
+│   ├── relatorios/       # Geração de PDF, Excel e certificados
+
+│   └── mail/             # Integração de e-mail
+
+│
+
+├── 📂 database/          # Banco de dados e scripts SQL
+
+│   ├── mapa.db           # Arquivo SQLite principal
+
+│   └── schema.sql        # DDL para recriação do banco
+
+│
+
+├── 📂 assets/            # Recursos estáticos globais
+
+│   ├── img/              # Logotipos, ícones e imagens
+
+│   └── fonts/            # Tipografias customizadas
+
+│
+
+└── README.md
+
+```
+
+---
+
+## 🚀 Instalação e Execução Local
+
+### Pré-requisitos
+- XAMPP (v8.x ou superior) instalado e configurado
+
+### Passo a Passo
+
+**1. Clone o repositório**
+```
+
+git clone https://github.com/matheusgvg/TCC-Senai-Betim-Matheus.git
+
+```
+
+**2. Mova o projeto para o diretório do Apache**
+```
+
+# Windows
+
+Copie a pasta para: C:xampphtdocsmapa
+
+# Linux / macOS
+
+cp -r TCC-Senai-Betim-Matheus /opt/lampp/htdocs/mapa
+
+```
+
+**3. Inicie os serviços no XAMPP**
+
+Abra o **XAMPP Control Panel** e inicie:
+- ✅ **Apache**
+
+> O módulo MySQL **não é necessário** — o projeto utiliza SQLite.
+
+**4. Configure o banco de dados**
+
+O arquivo `mapa.db` já vem populado com a estrutura base. Verifique se ele está em:
+```
+
+htdocs/mapa/database/mapa.db
+
+```
+Caso precise recriar o banco do zero:
+```
+
+sqlite3 database/mapa.db < database/schema.sql
+
+```
+
+**5. Acesse o sistema**
+
+Abra o navegador e acesse:
+```
+
+http://localhost/mapa/frontend/pages/login.html
+
+```
+
+---
+
+## 👥 Equipe de Desenvolvimento
+
+| Nome | Papel |
+|------|-------|
+| **Matheus** | 👑 Líder do Projeto & Líder de Turma |
+| **Bryan** | Desenvolvimento |
+| **Davi Franklin** | Desenvolvimento |
+| **Davi Moreno** | Desenvolvimento |
+| **Pedro** | Desenvolvimento |
+| **Prof.ª Priscila Nascimento** | Orientadora |
+
+> 🏫 Projeto desenvolvido no **SENAI Betim** — Curso Técnico em **Desenvolvimento de Sistemas**.
+
+---
+
+## 📜 Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
+
+---
+
+<div align="center">
+
+Desenvolvido com 💙 pela equipe MAPA · SENAI Betim · 2026
+
+</div>
+```
